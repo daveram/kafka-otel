@@ -1,0 +1,12 @@
+{
+  "name": "kafka-otel-consumer",
+  "version": "1.0.0",
+  "description": "KafkaJS consumer app for testing OpenTelemetry instrumentation",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "kafkajs": "^2.2.4"
+  }
+}

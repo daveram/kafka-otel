@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kafka-otel-consumer
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: kafka-otel-consumer
+  template:
+    metadata:
+      labels:
+        app: kafka-otel-consumer
+      annotations:
+        opentelemetry.io/inject-nodejs: "true"
+    spec:
+      containers:
+        - name: consumer
+          image: kafka-otel-consumer:latest
+          imagePullPolicy: IfNotPresent
+          env:
+            - name: KAFKA_BROKERS
+              value: kafka:9092
+            - name: KAFKA_TOPIC
+              value: otel-demo
+            - name: OTEL_SERVICE_NAME
+              value: kafka-otel-consumer
